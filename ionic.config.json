@@ -1,0 +1,7 @@
+{
+  "name": "formtemplate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
