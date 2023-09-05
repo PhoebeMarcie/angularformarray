@@ -1,20 +1,97 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+     Reactive form
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<form action="" [formGroup]="form">
+<div formArrayName="details" *ngFor="let o of details.controls; let i =index;">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div formGroupName="i">
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input
+        formControlName="name"
+        type="text"
+        aria-label="Name"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Age</ion-label>
+      <ion-input
+        formControlName="age"
+        type="text"
+        aria-label="Age"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        formControlName="email"
+        type="text"
+        aria-label="Email"
+      ></ion-input>
+    </ion-item>
+  </div>
+</div>
+
+</form>
+<ion-button color="primary">Add </ion-button>
+</ion-content>
+<div class="card mt-2">
+  <div class="card-header">
+      Result
+  </div>
+  <div class="card-body">
+      <code>
+          <pre>
+              {{result |json}}
+          </pre>
+      </code>
+  </div>
+</div> -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Reactive form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form">
+    <div formArrayName="details" *ngFor="let o of details.controls; let i = index;">
+      <div [formGroupName]="i">
+        <ion-item lines="full">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input formControlName="name" type="text" aria-label="Name"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Age</ion-label>
+          <ion-input formControlName="age" type="text" aria-label="Age"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email" type="text" aria-label="Email"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <ion-button color="primary" (click)="addNewContacts()">Add</ion-button>
+  </form>
+  <div class="card-footer text-center">
+    <button (click)="onSave()" class="btn btn-primary">Save</button>
+</div>
+  <div class="card mt-2" *ngIf="result">
+    <div class="card-header">
+      Result
+    </div>
+    <div class="card-body">
+      <code>
+        <pre>
+          {{ result | json }}
+        </pre>
+      </code>
+    </div>
   </div>
 </ion-content>
